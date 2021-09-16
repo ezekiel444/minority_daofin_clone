@@ -2,6 +2,9 @@ import styled from "styled-components";
 
 
 const SectionStyle = styled.section`
+position: -webkit-sticky;
+position: sticky;
+top: 0px;
  
   background-color: var(--main-color);
   color: var(--border);
