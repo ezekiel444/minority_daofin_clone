@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const SectionStyle = styled.section`
  
- background-color: var(--main-color);
+  background-color: var(--main-color);
   color: var(--border);
   height: 100vh;
   width: 15vmax;
@@ -43,7 +43,7 @@ const SectionStyle = styled.section`
   line-height: 2.5;
   width: 100%;
   list-style: none;
-}
+} 
 
 `
 

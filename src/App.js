@@ -1,7 +1,7 @@
 import './App.css';
 import {
   Switch,
-  Route,
+  Route
 } from "react-router-dom";
 import Home from './components/home/Home';
 import Add from './components/add/Add';
@@ -10,10 +10,11 @@ import Navbar from './components/navbar/Navbar';
 
 
 
+
 function App() {
   return (
     <div className="App">
-     <Navbar/>
+    <Navbar/>
       <Switch>
         <Route path="/home" component={Home} />
         <Route path="/add" component={Add} />

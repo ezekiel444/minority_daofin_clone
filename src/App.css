@@ -22,11 +22,8 @@ body {
 body {
   background: linear-gradient(95.81deg, #4cb8ff 2.29%, #4685ff 61.39%);
   font-family: sans-serif;
-  /* box-sizing: border-box; */
 }
 
 .App {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr;
+  display: flex;
 }
