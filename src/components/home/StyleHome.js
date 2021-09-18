@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 
 const HomeContainer = styled.section`
+color: var(--border);
 .total_board{
     display: flex;
 }
@@ -12,13 +13,37 @@ const HomeContainer = styled.section`
     .filter_category, .filter_category button{
         display: flex;
         margin: 10px;
+
     }
+
+    .filter_category button{
+        border: none;
+        border-radius: 30px;
+        font-size: 1.3em;
+        background: var(--text-muted);
+    }
+
+    .filter_category button:focus{
+        background-color:var( --main-color);
+    }
+
    .filter_btn{
        margin: 10px 20px;
+     
     }
 .filter_btn button{
     padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    background: var( --secondary-color);
+    color: var(--border);
+    font-size:1em
 }
+
+.filter_btn button :nth-child(1){
+    margin-right: 5px;
+}
+
 
     div{
         margin: 2px;
@@ -28,8 +53,6 @@ const HomeContainer = styled.section`
 .item_header{
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    /* background-color: red; */
-    /* margin: 5px; */
 }
 
 .item_container{
@@ -47,16 +70,11 @@ const HomeContainer = styled.section`
         border-radius: 25%;
     }
 
-}
-
-
-
-/* .img_container{
-    width: 50px;
-    img{
-        width:500%;
+    .logo_website :nth-child(1) {
+        margin-right: 20px;
     }
-} */
+
+}
 
 `
 

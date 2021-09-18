@@ -1,24 +1,31 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import CountBoard from './total_board/CountBoard'
 import HomeContainer from "./StyleHome"
-import {db} from "../../datastorage/db"
 import {userDataContainerHeader} from '../../datastorage/userDataContainerHeader'
 import { ImSphere, ImTwitter } from "react-icons/im";
-
-const extractCategoryValue = ["All", ...new Set(db.map(data=>data.category))]
+import { BsFilter } from "react-icons/bs";
+import {useQuery, gql} from "@apollo/client";
+import getDaofindData from '../apollo_files/QueryData';
 
 
 
 export default function Home() {
- const [data,SetDb] = useState(db)
-//  const [total_aum, setTotal] = useState(data)
+    const {loading, error,data} = useQuery(getDaofindData)
+    const [categoryFilter, setcategoryFilter] = useState([])
+    const [dataInfo, setDataInfo] = useState([])
+
+    useEffect(()=>{
+        if(!loading){
+            setDataInfo(data.daofinds)
+              const extractCategoryValue = ["All", ...new Set(data.daofinds.map(data=>data.category))]
+              setcategoryFilter(extractCategoryValue)
+        }
+    },[loading, data])
+
 
  const getTotal = ()=>{
      let totalResult = 0
-
-    data.filter(it=>(it.aum !=="N/A")).map(it=>{
-        totalResult +=Number(it.aum)
-    })
+  data.daofinds.filter(it=>(it.aum !=="N/A")).map(it=>totalResult +=Number(it.aum));
     return totalResult
  }
 
@@ -26,31 +33,37 @@ export default function Home() {
 
  const filterHandler = (item)=>{
     if(item ==="All"){
-        return SetDb(db)
+        return setDataInfo(data.daofinds)
     }
- let newSelectedItem = db.filter(eachItem=>{
+ let newSelectedItem = dataInfo.filter(eachItem=>{
     
      return eachItem.category === item
  })
- SetDb(newSelectedItem)
+  return setDataInfo(newSelectedItem)
  }
 
+ if (loading) return <p>Loading...</p>;
+ if (error) return <p>Error :(</p>;
+  
     return (
         <HomeContainer>
           <div className="total_board">
-          <CountBoard title="Number of DAOs" total_item={data.length} />
-           <CountBoard title="Total AUM (USD)" total_item={getTotal()}/>
+          <CountBoard title="Number of DAOs" total_item={data.daofinds.length} />
+           <CountBoard title="Total AUM (USD)" total_item={`$${getTotal()}`}/>
           </div>
            <div className="filter_section">
                <div className="filter_category">
-                   {extractCategoryValue.map((data,idx)=>{
+                   {
+                  
+                  categoryFilter.map((data,idx)=>{
                    return (
                        <div key={idx}>
                           <button onClick={()=>filterHandler(data)}> {data}</button>
                        </div>
                    )
-               })}</div>
-               <div className="filter_btn"><button>filter</button></div>
+               })}
+               </div>
+               <div className="filter_btn"><button><BsFilter size={15}/>filter</button></div>
            </div>
 
         <hr />  
@@ -68,10 +81,10 @@ export default function Home() {
         </div>
         <hr />
 
-{data.map(data=>{
-    const {aum,category,twl,img,id,foundDate,name} = data
+{dataInfo.map(item=>{
+    const {aum,category,twl,img,id,foundDate,name} = item
     return (
-        <div className="item_container" key={id}>
+        <div className="item_container" key={id} onClick={()=>console.log(name)}>
             
             <div className="nameImg">
             <img src={img} alt={name} />
@@ -82,9 +95,9 @@ export default function Home() {
             <h3>${aum}</h3>
             <h3>{twl}</h3>
             <h3>{foundDate}</h3>
-            <div>
-                <ImTwitter/>
-                <ImSphere/>
+            <div className="logo_website">
+                <ImTwitter size={30}/>
+                <ImSphere size={30}/>
             </div>
 
         </div>

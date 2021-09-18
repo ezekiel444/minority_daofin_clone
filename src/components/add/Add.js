@@ -1,26 +1,48 @@
+import gql from 'graphql-tag'
 import React, { useState } from 'react'
 import StyleSection from './styleAdd'
 
+// const addDaofindItem = gql`
+// mutation addItem( $img: String,
+//     $name: String,
+//     $category: String,
+//     $aum: String,
+//     $twl: String,
+//     $foundDate: String){
+//         addDaofind(name:$name, category:$category, aum:$aum,twl:$twl, foundDate:$foundDate){
+//         }
+        
+//     }
+// `
+
 const initialState = {
     text:"",
-
 }
 
 export default function Add() {
 
-    const [userData, setUserData] = useState(initialState)
-    const getUserInput = ()=>{
-    // setUserData([userData.])
+    const [userData, setUserData] = useState([initialState])
+    const getUserInput = (e)=>{
+        // console.log(e.currentTarget.name);
+    setUserData({...userData, [e.currentTarget.name]:e.currentTarget.value})
 
     }
+
+    const handleSumbitData = (e)=>{
+        e.preventDefault()
+        console.log(userData);
+    }
+
+
+
     return (
         <StyleSection>
          <h3>Add DAO Form</h3>
          <main>
-             <form>   
+             <form onSubmit={(event)=>handleSumbitData(event)}>   
              <div className="name">
              <label htmlFor="Full-name">Full name</label>   
-              <input type="text" id="Full-name" value={userData.text} name="name" onChange={getUserInput} />
+              <input type="text" id="Full-name" value={userData.text} name="name" onChange={(event)=>getUserInput(event)} />
              </div>
               
              <div className="category">
@@ -78,7 +100,6 @@ export default function Add() {
               <input type="text" id="Description" placeholder="Brief Description" value={userData.text} name="description" onChange={getUserInput} />
               </div>
               <button id="Submit">Submit</button>
-
              </form>
 
          </main>
