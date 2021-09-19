@@ -6,12 +6,21 @@ const typeDefs = gql`
 
 type UserInput{
     id: ID,
-    img: String,
-    name: String,
-    category: String,
-    aum: String,
-    twl: String,
-    foundDate: String
+    img:String,
+    foundDate:String,
+    twl:String,
+    aum:String,
+    name:String,
+    category:String,
+    tokenSymbol:String,
+    tokenName:String,
+    twitter:String,
+    discord:String,
+    website:String,
+    tvl:String,
+    blockChain:String,
+    headQuarter:String,
+    description:String
 }
 
 
@@ -21,23 +30,27 @@ type Query{
 }
 
 input InputData{
-    img: String,
-        name: String,
-        category: String,
-        aum: String,
-        twl: String,
-        foundDate: String
+    img:String,
+    foundDate:String,
+    twl:String,
+    aum:String,
+    name:String,
+    category:String,
+    tokenSymbol:String,
+    tokenName:String,
+    twitter:String,
+    discord:String,
+    website:String,
+    tvl:String,
+    blockChain:String,
+    headQuarter:String,
+    description:String
 }
 
 
 type Mutation{
     addDaofind(
-        img: String,
-        name: String,
-        category: String,
-        aum: String,
-        twl: String,
-        foundDate: String
+        post:InputData
         ):UserInput,
 
 

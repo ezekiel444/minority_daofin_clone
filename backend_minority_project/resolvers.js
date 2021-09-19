@@ -16,7 +16,7 @@ const resolvers = {
  
  Mutation:{
      addDaofind: async(parent,args, {DaofindData})=>{
-     let createData =await new DaofindData({...args})
+     let createData =await new DaofindData({...args.post})
     return createData.save() 
      },
  
@@ -24,7 +24,6 @@ const resolvers = {
          const {id} = args.id
          
        return await DaofindData.findOneAndUpdate(id, {...args.post},{new:true})
-        // return findAndUpdate
      }
      } 
  }

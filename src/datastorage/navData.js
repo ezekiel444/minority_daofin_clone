@@ -5,15 +5,15 @@ import { RiBook2Fill } from "react-icons/ri";
 
 export const navIcon = [
     {
-    title: "Home",
+    title: "home",
     logo: <ImHome/>
 },
     {
-    title: "Add",
+    title: "add",
     logo: <BiAddToQueue/>
 },
     {
-    title: "Learn",
+    title: "learn",
     logo: <RiBook2Fill/>
 }
 

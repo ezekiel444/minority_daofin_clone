@@ -17,10 +17,11 @@ function App() {
     <Navbar/>
     <div className="Dynamic_component">
     <Switch>
-        <Route path="/" exact component={Home} />
-        <Route path="/add" component={Add} />
         <Route path="/learn" component={Learn} />
+        <Route path="/add" component={Add} />
         <Route path="/detail/:id" component={DetailPage}   />
+        <Route path="/" component={Home} />
+       
       </Switch>
     </div>
       

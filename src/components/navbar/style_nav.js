@@ -9,7 +9,7 @@ top: 0px;
   background-color: var(--main-color);
   color: var(--border);
   height: 100vh;
-  width: 15vmax;
+  width: 20vmax;
 
 .content{
   margin-top:40px;

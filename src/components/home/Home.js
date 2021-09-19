@@ -4,8 +4,9 @@ import HomeContainer from "./StyleHome"
 import {userDataContainerHeader} from '../../datastorage/userDataContainerHeader'
 import { ImSphere, ImTwitter } from "react-icons/im";
 import { BsFilter } from "react-icons/bs";
-import {useQuery, gql} from "@apollo/client";
+import {useQuery} from "@apollo/client";
 import getDaofindData from '../apollo_files/QueryData';
+import { Link } from 'react-router-dom';
 
 
 
@@ -14,8 +15,9 @@ export default function Home() {
     const [categoryFilter, setcategoryFilter] = useState([])
     const [dataInfo, setDataInfo] = useState([])
 
+
     useEffect(()=>{
-        if(!loading){
+        if(!loading && data){
             setDataInfo(data.daofinds)
               const extractCategoryValue = ["All", ...new Set(data.daofinds.map(data=>data.category))]
               setcategoryFilter(extractCategoryValue)
@@ -81,10 +83,12 @@ export default function Home() {
         </div>
         <hr />
 
+
 {dataInfo.map(item=>{
     const {aum,category,twl,img,id,foundDate,name} = item
     return (
-        <div className="item_container" key={id} onClick={()=>console.log(name)}>
+       <Link to={`detail/${id}`}>
+           <div className="item_container" key={id}> 
             
             <div className="nameImg">
             <img src={img} alt={name} />
@@ -92,7 +96,7 @@ export default function Home() {
             </div>
         
             <h3>{category}</h3>
-            <h3>${aum}</h3>
+            <h3>${aum ? aum : "N/A"}</h3>
             <h3>{twl}</h3>
             <h3>{foundDate}</h3>
             <div className="logo_website">
@@ -101,6 +105,7 @@ export default function Home() {
             </div>
 
         </div>
+        </Link> 
     )
 })}
 

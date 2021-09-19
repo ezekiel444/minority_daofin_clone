@@ -8,6 +8,16 @@ color: var(--border);
     display: flex;
 }
 
+a,link{
+    text-decoration:none;
+    color: var(--border);
+}
+a:hover{
+    cursor: pointer;
+    color: hsla(30, 100%, 50%, .3);
+
+}
+
 .filter_section{
     display: flex;
     .filter_category, .filter_category button{
