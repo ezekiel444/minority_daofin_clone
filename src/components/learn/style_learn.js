@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 
 const StyleContainer = styled.main`
-height: 100vh;
+height: 85vh;
 width: 83vmax;
 
 .cardSection{

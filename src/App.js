@@ -13,8 +13,11 @@ import DetailPage from './components/detailpage/DetailPage';
 function App() {
 
   return (
-    <div className="App">
-    <Navbar/>
+    <div className="App"> 
+    <div className="searchBar">
+      <input type="text" placeholder="Search Dao" />
+    </div>
+    <Navbar/> 
     <div className="Dynamic_component">
     <Switch>
         <Route path="/learn" component={Learn} />

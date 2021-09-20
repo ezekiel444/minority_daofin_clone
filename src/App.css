@@ -34,3 +34,22 @@ body {
   align-items: center;
   justify-content: center;
 }
+
+.searchBar {
+  position: absolute;
+  top: 25px;
+  left: 280px;
+  border-radius: 20px;
+  width: 30%;
+  height: 5vh;
+}
+.searchBar input {
+  background-color: var(--b-primary);
+  width: 100%;
+  border-radius: 20px;
+  height: 5vh;
+  border: 1px solid white;
+  outline: none;
+  font-size: 1.2em;
+  color: var(--border);
+}

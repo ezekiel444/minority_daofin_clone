@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 
 const StyleSection = styled.section`
-height: 100vh;
+height: 85vh;
 width: 85vw;
 
 
