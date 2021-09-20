@@ -4,14 +4,12 @@ import HomeContainer from "./StyleHome"
 import {userDataContainerHeader} from '../../datastorage/userDataContainerHeader'
 import { ImSphere, ImTwitter } from "react-icons/im";
 import { BsFilter } from "react-icons/bs";
-import {useQuery} from "@apollo/client";
-import getDaofindData from '../apollo_files/QueryData';
+
 import { Link } from 'react-router-dom';
 
 
 
-export default function Home() {
-    const {loading, error,data} = useQuery(getDaofindData)
+export default function Home({loading, error,data}) {
     const [categoryFilter, setcategoryFilter] = useState([])
     const [dataInfo, setDataInfo] = useState([])
 
