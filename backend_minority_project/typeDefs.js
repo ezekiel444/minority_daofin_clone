@@ -23,7 +23,6 @@ type UserInput{
     description:String
 }
 
-
 type Query{
     daofinds:[UserInput]
     daofind(id:ID):UserInput
